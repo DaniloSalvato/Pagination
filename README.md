@@ -9,14 +9,14 @@ Uma API de teste de paginação com o intuito de praticar programação com C# e
 ## Agendas
 
 
-```http
+``http
   GET /v1/todos/load
-```
+``
 #### Cria uma lista de itens
 
-```http
+``http
   GET /v1/todos/skip/{skip}/take/{take}
-```
+``
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `skip` | `int` | **Obrigatório** |
