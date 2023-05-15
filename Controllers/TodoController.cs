@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using paginacao.Data;
 using paginacao.Models;
 using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace paginacao.Controllers
@@ -23,7 +21,7 @@ namespace paginacao.Controllers
                 {
                     Id = i + 1,
                     Done = false,
-                    CreatedAt = DateTime.Now,   
+                    CreatedAt = DateTime.Now,
                     Title = $"Tarefa {i}"
                 };
                 await context.Todos.AddAsync(todo);
@@ -33,11 +31,13 @@ namespace paginacao.Controllers
         }
 
         [HttpGet("skip/{skip:int}/take/{take:int}")]
-        public async Task<ActionResult> GetAsync([FromServices] AppDbContext context,int skip = 0, int take = 25)
+        public async Task<ActionResult> GetAsync([FromServices] AppDbContext context, int skip = 0, int take = 25)
         {
+
             //Caso queira barrar o numero de requisições
             //if (take > 1000)
             //    return BadRequest();
+
             var total = await context.Todos.CountAsync();
             var todos = await context
                 .Todos
